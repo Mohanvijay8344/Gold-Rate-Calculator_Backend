@@ -36,7 +36,7 @@ async function genrateHashedPassword(Password) {
 API.post("/Register", async function (request, response) {
     try{
         const { Username, Email, Password } = request.body;
-        const client = new MongoClient("mongodb+srv://Mohan1997:9876543210@cluster0.ns9ghot.mongodb.net"); // dial
+        const client = new MongoClient("URL"); // dial
                 // Top level await
                 await client.connect(); // call    
                 console.log("Mongo is connected !!!  ");
@@ -71,7 +71,7 @@ API.post("/login", async function (request, response) {
     try{
         const { Password, Email } = request.body;
       
-        const client = new MongoClient("mongodb+srv://Mohan1997:9876543210@cluster0.ns9ghot.mongodb.net"); // dial
+        const client = new MongoClient("URL"); // dial
                 // Top level await
                 await client.connect(); // call    
                 console.log("Mongo is connected !!!  ");
@@ -115,7 +115,7 @@ API.post(
      
       try {
         const { Email } = request.body;
-        const client = new MongoClient("mongodb+srv://Mohan1997:9876543210@cluster0.ns9ghot.mongodb.net"); // dial
+        const client = new MongoClient("URL"); // dial
                 // Top level await
                 await client.connect(); // call    
                 console.log("Mongo is connected !!!  ");
@@ -172,7 +172,7 @@ API.post(
   API.get("/reset-password/:id/:token", async function (request, response) {
     const { id, token } = request.params;
     console.log(request.params);
-    const client = new MongoClient("mongodb+srv://Mohan1997:9876543210@cluster0.ns9ghot.mongodb.net"); // dial
+    const client = new MongoClient("URL"); // dial
                 // Top level await
                 await client.connect(); // call    
                 console.log("Mongo is connected !!!  ");
@@ -194,36 +194,6 @@ API.post(
     }
   });
 
-// //Update New Password;
-// API.post("/Update/:id/:token", async function (req, res) {
-//     const id = req.params.id
-//     const token = req.params.token
-//     try {
-
-//         let salt = await bcrypt.genSalt(10);
-//         let hash = await bcrypt.hash(req.body.Password, salt);
-//         let connection = await MongoClient.connect(URL);
-//         let db = connection.db(DB);
-
-//         let compare = jwt.verify(token,process.env.SEC);
-//         console.log(compare);
-//         if (compare) {
-//             let Person = await db.collection("Users").findOne({ _id: mongoDB.ObjectId(`${id}`) })
-//             if (!Person) {
-//                 return res.json({ Message: "User Exists!!" });
-//             }
-//             await db.collection("Users").updateOne({ _id: mongoDB.ObjectId(`${id}`) }, { $set: { Password: hash } });
-//             res.json({ Message: "Password Updated" });
-//         } 
-//         else {
-//             res.json({ Message: "URL TimeOut" })
-//         }
-//     } catch (error) {
-//         res.status(500).json({ Message: 'URL TimeOut' });
-//         console.log(error);
-//     }
-
-// })
 
 
 //Get All data of city,and GOld rate's
